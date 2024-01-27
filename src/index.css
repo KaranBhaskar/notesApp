@@ -1,0 +1,109 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+.split {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+.gutter {
+  background-color: #181818;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+
+.gutter.gutter-horizontal {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==");
+  cursor: col-resize;
+}
+
+.editor--heading {
+  display: flex;
+  justify-content: space-around;
+}
+
+.editor button {
+  margin: auto 0;
+  padding: 0.2rem 0.625rem;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 2em;
+  border: none;
+}
+.editor button:hover,
+.Blank--notes button:hover {
+  background-color: rgba(255, 255, 255, 0.87);
+  color: #202020;
+}
+.editor button:active,
+.Blank--notes button:active {
+  background-color: #1c1c1c;
+  color: rgba(255, 255, 255, 0.87);
+}
+.note--info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.note--info button {
+  border-radius: 10;
+  padding: 0.2rem 0.6rem;
+}
+
+.selected {
+  background-color: #1c1c1c;
+}
+
+.note--info h2 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.Blank--notes {
+  display: flex;
+  justify-content: center;
+  gap: 1.5625rem;
+}
+.Blank--notes button {
+  font-size: 1rem;
+  margin: auto 0;
+  padding: 0.625rem 1.25rem;
+  cursor: pointer;
+  border: none;
+}
+
+.notepad button {
+  background-color: #0c0c0c;
+  border: none;
+  font-size: 20px;
+  padding: 0.625rem;
+  margin: 0.3125rem;
+  cursor: pointer;
+}
+.notepad button:hover {
+  border: 1px solid whitesmoke;
+}
