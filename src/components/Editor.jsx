@@ -8,7 +8,6 @@ export default function Editor({
   setCurrentNoteId,
 }) {
   const noteElements = notes.map((note, index) => {
-    console.log(note.id);
     return (
       <div
         key={note.id}
@@ -17,7 +16,10 @@ export default function Editor({
         }
         onClick={() => setCurrentNoteId(note.id)}
       >
-        <h2 id={note.id}>{note.body.split("\n")[0] || `Note ${index + 1}`}</h2>
+        <h2 id={note.id}>
+          {note.body.split("\n")[0].replace(/(<([^>]+)>)/gi, "") ||
+            `Note ${index + 1}`}
+        </h2>
         <button onClick={() => deleteNote(note.id)}>-</button>
       </div>
     );

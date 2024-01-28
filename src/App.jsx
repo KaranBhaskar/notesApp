@@ -5,15 +5,18 @@ import Split from "react-split";
 import { nanoid } from "nanoid";
 
 function App() {
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState(
+    JSON.parse(localStorage.getItem("notes")) || []
+  );
   const [currentNoteID, setCurrentNoteId] = useState(
     (notes[0] && notes[0].id) || ""
   );
 
+  localStorage.setItem("notes", JSON.stringify(notes));
   function addNotes() {
     const note = {
       id: nanoid(),
-      body: "#Add any heading here",
+      body: "Edit here",
     };
     setNotes((prevNotes) => [note, ...prevNotes]);
     setCurrentNoteId(note.id);
@@ -28,6 +31,18 @@ function App() {
     return notes.find((note) => note.id === currentNoteID) || notes[0];
   }
 
+  function updateCurrentNote(text) {
+    const newNotes = [];
+    notes.forEach((note) => {
+      if (note.id === currentNoteID) {
+        newNotes.unshift({ ...note, body: text });
+      } else {
+        newNotes.push(note);
+      }
+    });
+    setNotes(newNotes);
+  }
+
   return (
     <main>
       {notes.length ? (
@@ -39,7 +54,10 @@ function App() {
             getCurrentNoteId={getCurrentNote()}
             setCurrentNoteId={setCurrentNoteId}
           />
-          <Slidebar />
+          <Slidebar
+            getCurrentNoteId={getCurrentNote()}
+            updateCurrentNote={updateCurrentNote}
+          />
         </Split>
       ) : (
         <div className="Blank--notes">
